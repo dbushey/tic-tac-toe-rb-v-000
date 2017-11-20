@@ -115,4 +115,12 @@ def play(board)
     turn(board)
     rounds -= 1
   end
+
+    if won?(board)
+      return "Congratulations"
+    elsif draw?(board)
+      return "Draw"
+    else
+      turn(board)
+  end
 end
