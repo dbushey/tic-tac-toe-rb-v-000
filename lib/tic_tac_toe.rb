@@ -77,6 +77,37 @@ def current_player(board)
   end
 end
 
+def won?(board)
+
+  WIN_COMBINATIONS.detect do |win_combination|
+    board[win_combination[0]] == board[win_combination[1]] &&
+    board[win_combination[1]] == board[win_combination[2]] &&
+    position_taken?(board, win_combination[0])
+  end
+
+end
+
+def full?(board)
+  board.none? {|i| i == " "}
+end
+
+def draw?(board)
+  !(won?(board)) && full?(board)
+end
+
+def over?(board)
+  won?(board) || full?(board) || draw?(board)
+end
+
+def winner(board)
+  if won?(board)
+    return board[won?(board)[0]]
+  else
+    return
+    nil
+  end
+end
+
 def play(board)
   rounds = 9
 
