@@ -109,18 +109,17 @@ def winner(board)
 end
 
 def play(board)
-  rounds = 9
 
-  while rounds >= 1
+  until over?(board)
     turn(board)
-    rounds -= 1
   end
 
-    if won?(board)
-      return "Congratulations"
-    elsif draw?(board)
-      return "Draw"
-    else
-      turn(board)
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  else
+    turn(board)
   end
+
 end
